@@ -72,20 +72,20 @@
 						var fxtnd = fname.substring(fname.lastIndexOf(".")+1, fname.length).toLowerCase();
 						if($this.options.allowedFormats != "*" && Array.isArray($this.options.allowedFormats)) {
 							if($this.options.allowedFormats.indexOf(fxtnd)  == -1) { // $.inArray(fxtnd,$this.options.allowedFormats)
-								alert("�꾨옒�� �뚯씪留� 媛��ν빀�덈떎.\n\n[ "+$this.options.allowedFormats.join(", ")+" ]");
+								alert("아래의 파일만 가능합니다.\n\n[ "+$this.options.allowedFormats.join(", ")+" ]");
 								is_seleted_ok = 0;
 								$this.resetForm();
 								return;
 							}
 						}
 						if($this.options.notallowedFormats.indexOf(fxtnd)  != -1) {
-							alert("�좏깮�� �뚯씪�� 遺덇��⑸땲��.");
+							alert("선택한 파일은 불가합니다.");
 							is_seleted_ok = 0;
 							$this.resetForm();
 							return;
 						}
 						if (f.size / 1024 > $this.options.maxFileSizeKb) {
-							alert("�뚯씪 �ш린媛� �덈Т �쎈땲��.\n\n(Max : " + $this.options.maxFileSizeKb + "kB)");
+							alert("파일 크기가 너무 큽니다.\n\n(Max : " + $this.options.maxFileSizeKb + "kB)");
 							is_seleted_ok = 0;
 							$this.resetForm();
 							return;
@@ -101,7 +101,7 @@
 								$imgtag.attr("alt",label);
 							}
 							reader.onerror = function() {
-								alert('誘몃━蹂닿린瑜� 留뚮뱾 �� �놁뒿�덈떎.');
+								alert('미리보기를 만들 수 없습니다.');
 								input.val('');
 							};
 							reader.readAsDataURL(f);
@@ -164,11 +164,11 @@
 			<div class="input-group-btn">
 				<label class="btn btn-xs btn-success zoo-imgupload-filelabel  dropdown-toggle">
 					<span>
-						�뚯씪�좏깮&hellip;
+						파일선택&hellip;
 					</span>
 					<input type="file" name='att_catalogue' style="display:none ;" multiple>
 				</label>
-				<button type="button" id="btn_deletelistimg" class="btn btn-xs btn-info zoo-imgupload-remove hide " disabled >�좏깮痍⑥냼</button>
+				<button type="button" id="btn_deletelistimg" class="btn btn-xs btn-info zoo-imgupload-remove hide " disabled >선택취소</button>
 			</div>
 		</div>
 	</div>
@@ -178,10 +178,10 @@
 		<div class='zoo-imgupload-preview'></div>
 		<div class="btn-group">
 			<label class="btn btn-xs btn-success zoo-imgupload-filelabel btn-file dropdown-toggle">
-				<span>�뚯씪�좏깮</span>
+				<span>파일선택</span>
 				<input type="file" name="listimage" id="listimage" accept="image/*" style="display:none">
 			</label>
-			<button type="button" id="btn_deletelistimg" class="btn btn-xs btn-info zoo-imgupload-remove hide" disabled >�뚯씪��젣</button>
+			<button type="button" id="btn_deletelistimg" class="btn btn-xs btn-info zoo-imgupload-remove hide" disabled >파일삭제</button>
 		</div>
 	</div>
 
@@ -192,11 +192,11 @@ $(".zoo-imgupload").ZooFileSelector({});
 										<input type="text" class="form-control input-xs zoo-fileselector-name" readonly value="<?=$data['prodinfo']['catalog_clt']?>">
 										<div class="input-group-btn">
 											<label class="btn btn-xs btn-success zoo-fileselector-filelabel btn-file">
-												<span><?=cLang("�뚯씪�좏깮")?></span>
+												<span><?=cLang("파일선택")?></span>
 												<input type="file" name="att_catalog" id="att_catalog" style="display:none">
 											</label>
-											<button type="button" class="btn btn-xs btn-default zoo-fileselector-reset hide" disabled ><?=cLang("�좏깮痍⑥냼")?></button>
-											<a href="" class="btn btn-xs btn-info zoo-fileseletor-download"><?=cLang("�ㅼ슫濡쒕뱶")?></a>
+											<button type="button" class="btn btn-xs btn-default zoo-fileselector-reset hide" disabled ><?=cLang("선택취소")?></button>
+											<a href="" class="btn btn-xs btn-info zoo-fileseletor-download"><?=cLang("다운로드")?></a>
 										</div>
 									</div>
 $(".att_files").ZooFileSelector({});
